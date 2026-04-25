@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
     <properties>
-        <property name="LOG_HOME">./logs/how-tomcat-work/ch02</property>
+        <property name="LOG_HOME">./logs/how-tomcat-work/ch01</property>
         <property name="FILE_NAME">app</property>
         <property name="laolang.level">info</property>
     </properties>
