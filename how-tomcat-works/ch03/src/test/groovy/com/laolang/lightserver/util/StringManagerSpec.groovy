@@ -13,7 +13,7 @@ class StringManagerSpec extends Specification {
         sm = StringManager.getManager(Constants.Package)
     }
 
-    def "测试单例获取"(){
+    def "测试单例获取"() {
         expect:
         StringManager.getManager(Constants.Package) == StringManager.getManager(Constants.Package)
     }
@@ -62,13 +62,11 @@ class StringManagerSpec extends Specification {
 
     def "有参且有多个空参数"() {
         expect:
-        sm.getString("test.with.four.arg", "1", null,null,"4") == "hello 1 null null 4"
+        sm.getString("test.with.four.arg", "1", null, null, "4") == "hello 1 null null 4"
     }
 
     def "有参降级"() {
         expect:
         sm.getString("test.with.number.arg", "xx") == "hello {0,number,interger} arg[0]=xx"
     }
-
-
 }

@@ -8,129 +8,132 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 public class HttpResponseFacade implements HttpServletResponse {
-  private HttpServletResponse response;
-  public HttpResponseFacade(HttpResponse response) {
-    this.response = response;
-  }
 
-  /** implementation of HttpServletResponse  */
-  public void addCookie(Cookie cookie) {
-    response.addCookie(cookie);
-  }
+    private HttpServletResponse response;
 
-  public void addDateHeader(String name, long value) {
-    response.addDateHeader(name, value);
-  }
+    public HttpResponseFacade(HttpResponse response) {
+        this.response = response;
+    }
 
-  public void addHeader(String name, String value) {
-    response.addHeader(name, value);
-  }
+    /** implementation of HttpServletResponse */
+    public void addCookie(Cookie cookie) {
+        response.addCookie(cookie);
+    }
 
-  public void addIntHeader(String name, int value) {
-    response.addIntHeader(name, value);
-  }
+    public void addDateHeader(String name, long value) {
+        response.addDateHeader(name, value);
+    }
 
-  public boolean containsHeader(String name) {
-    return response.containsHeader(name);
-  }
+    public void addHeader(String name, String value) {
+        response.addHeader(name, value);
+    }
 
-  public String encodeRedirectURL(String url) {
-    return response.encodeRedirectURL(url);
-  }
+    public void addIntHeader(String name, int value) {
+        response.addIntHeader(name, value);
+    }
 
-  public String encodeRedirectUrl(String url) {
-    return response.encodeRedirectUrl(url);
-  }
+    public boolean containsHeader(String name) {
+        return response.containsHeader(name);
+    }
 
-  public String encodeUrl(String url) {
-    return response.encodeUrl(url);
-  }
+    public String encodeRedirectURL(String url) {
+        return response.encodeRedirectURL(url);
+    }
 
-  public String encodeURL(String url) {
-    return response.encodeURL(url);
-  }
+    public String encodeRedirectUrl(String url) {
+        return response.encodeRedirectUrl(url);
+    }
 
-  public void flushBuffer() throws IOException {
-     response.flushBuffer();
-  }
+    public String encodeUrl(String url) {
+        return response.encodeUrl(url);
+    }
 
-  public int getBufferSize() {
-    return response.getBufferSize();
-  }
+    public String encodeURL(String url) {
+        return response.encodeURL(url);
+    }
 
-  public String getCharacterEncoding() {
-    return response.getCharacterEncoding();
-  }
+    public void flushBuffer() throws IOException {
+        response.flushBuffer();
+    }
 
-  public Locale getLocale() {
-    return response.getLocale();
-  }
+    public int getBufferSize() {
+        return response.getBufferSize();
+    }
 
-  public ServletOutputStream getOutputStream() throws IOException {
-    return response.getOutputStream();
-  }
+    public String getCharacterEncoding() {
+        return response.getCharacterEncoding();
+    }
 
-  public PrintWriter getWriter() throws IOException {
-    return response.getWriter();
-  }
+    public Locale getLocale() {
+        return response.getLocale();
+    }
 
-  public boolean isCommitted() {
-    return response.isCommitted();
-  }
+    public ServletOutputStream getOutputStream() throws IOException {
+        return response.getOutputStream();
+    }
 
-  public void reset() {
-    response.reset();
-  }
+    public PrintWriter getWriter() throws IOException {
+        return response.getWriter();
+    }
 
-  public void resetBuffer() {
-    response.resetBuffer();
-  }
+    public boolean isCommitted() {
+        return response.isCommitted();
+    }
 
-  public void sendError(int sc) throws IOException {
-    response.sendError(sc);
-  }
+    public void reset() {
+        response.reset();
+    }
 
-  public void sendError(int sc, String message) throws IOException {
-    response.sendError(sc, message);
-  }
+    public void resetBuffer() {
+        response.resetBuffer();
+    }
 
-  public void sendRedirect(String location) throws IOException {
-    response.sendRedirect(location);
-  }
+    public void sendError(int sc) throws IOException {
+        response.sendError(sc);
+    }
 
-  public void setBufferSize(int size) {
-    response.setBufferSize(size);
-  }
+    public void sendError(int sc, String message) throws IOException {
+        response.sendError(sc, message);
+    }
 
-  public void setContentLength(int length) {
-    response.setContentLength(length);
-  }
+    public void sendRedirect(String location) throws IOException {
+        response.sendRedirect(location);
+    }
 
-  public void setContentType(String type) {
-    response.setContentType(type);
-  }
+    public void setBufferSize(int size) {
+        response.setBufferSize(size);
+    }
 
-  public void setDateHeader(String name, long value) {
-    response.setDateHeader(name, value);
-  }
+    public void setContentLength(int length) {
+        response.setContentLength(length);
+    }
 
-  public void setHeader(String name, String value) {
-    response.setHeader(name, value);
-  }
+    public void setContentType(String type) {
+        response.setContentType(type);
+    }
 
-  public void setIntHeader(String name, int value) {
-    response.setIntHeader(name, value);
-  }
+    public void setDateHeader(String name, long value) {
+        response.setDateHeader(name, value);
+    }
 
-  public void setLocale(Locale locale) {
-    response.setLocale(locale);
-  }
+    public void setHeader(String name, String value) {
+        response.setHeader(name, value);
+    }
 
-  public void setStatus(int sc) {
-    response.setStatus(sc);
-  }
+    public void setIntHeader(String name, int value) {
+        response.setIntHeader(name, value);
+    }
 
-  public void setStatus(int sc, String message) {
-    response.setStatus(sc, message);
-  }
+    public void setLocale(Locale locale) {
+        response.setLocale(locale);
+    }
+
+    public void setStatus(int sc) {
+        response.setStatus(sc);
+    }
+
+    public void setStatus(int sc, String message) {
+        response.setStatus(sc, message);
+    }
+
 }
