@@ -98,8 +98,8 @@ public class HttpResponse implements HttpServletResponse {
     /**
      * call this method to send headers and response to the output
      */
-    public void finishResponse() {
-        // sendHeaders();
+    public void finishResponse() throws IOException {
+        sendHeaders();
         // Flush and close the appropriate output mechanism
         if (writer != null) {
             writer.flush();
@@ -310,6 +310,9 @@ public class HttpResponse implements HttpServletResponse {
         try {
             /* request.getUri has been replaced by request.getRequestURI */
             File file = new File(Constants.WEB_ROOT, request.getRequestURI());
+
+            sendHeaders();
+
             fis = new FileInputStream(file);
             /*
              * HTTP Response = Status-Line (( general-header | response-header |

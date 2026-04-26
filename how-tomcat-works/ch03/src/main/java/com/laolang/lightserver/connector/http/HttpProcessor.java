@@ -37,7 +37,7 @@ public class HttpProcessor {
     /**
      * The string manager for this package.
      */
-    protected StringManager sm = StringManager.getManager("ex03.pyrmont.connector.http");
+    protected StringManager sm = StringManager.getManager("com.laolang.lightserver.connector.http");
 
     public void process(Socket socket) {
         SocketInputStream input = null;

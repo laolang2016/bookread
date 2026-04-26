@@ -15,9 +15,10 @@ public class HttpConnector implements Runnable {
         return scheme;
     }
 
+    @Override
     public void run() {
         ServerSocket serverSocket = null;
-        int port = 8080;
+        int port = 8092;
         try {
             serverSocket = new ServerSocket(port, 1, InetAddress.getByName("127.0.0.1"));
         }
