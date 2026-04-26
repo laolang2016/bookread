@@ -66,7 +66,7 @@ public class ServletProcessor {
             System.out.println(e.toString());
         }
         catch (Throwable e) {
-            System.out.println(e.toString());
+            e.printStackTrace();
         }
     }
 

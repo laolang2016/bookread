@@ -53,7 +53,7 @@ public class HttpProcessor {
             response = new HttpResponse(output);
             response.setRequest(request);
 
-            response.setHeader("Server", "Pyrmont Servlet Container");
+            response.setHeader("Server", "LightServer Servlet Container");
 
             parseRequest(input, output);
             parseHeaders(input);
@@ -147,6 +147,7 @@ public class HttpProcessor {
         String protocol = new String(requestLine.protocol, 0, requestLine.protocolEnd);
 
         // Validate the incoming request line
+        // 一个请求至少要有方法和 URI
         if (method.length() < 1) {
             throw new ServletException("Missing HTTP request method");
         }
@@ -154,6 +155,7 @@ public class HttpProcessor {
             throw new ServletException("Missing HTTP request URI");
         }
         // Parse any query parameters out of the request URI
+        // 解析 get 参数
         int question = requestLine.indexOf("?");
         if (question >= 0) {
             request.setQueryString(new String(requestLine.uri, question + 1, requestLine.uriEnd - question - 1));
@@ -165,6 +167,7 @@ public class HttpProcessor {
         }
 
         // Checking for an absolute URI (with the HTTP protocol)
+        // 解析绝对路径
         if (!uri.startsWith("/")) {
             int pos = uri.indexOf("://");
             // Parsing out protocol and host name
@@ -202,6 +205,7 @@ public class HttpProcessor {
         }
 
         // Normalize URI (using String operations at the moment)
+        // 标准化访问路径
         String normalizedUri = normalize(uri);
 
         // Set the corresponding request properties
