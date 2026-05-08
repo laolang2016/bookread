@@ -20,9 +20,7 @@ public class ExampleServlet extends HttpServlet {
         System.out.println("ExampleServlet init");
     }
 
-    public void doGet(HttpServletRequest request,
-                      HttpServletResponse response)
-            throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("request uri:" + request.getRequestURI());
 
         response.setContentType("text/html");
@@ -63,4 +61,5 @@ public class ExampleServlet extends HttpServlet {
         out.flush();
         out.close();
     }
+
 }

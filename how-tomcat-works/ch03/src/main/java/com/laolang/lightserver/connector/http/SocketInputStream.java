@@ -69,8 +69,7 @@ public class SocketInputStream extends InputStream {
 
     /**
      * Construct a servlet input stream associated with the specified socket input.
-     *
-     * @param is         socket input stream
+     * @param is socket input stream
      * @param bufferSize size of the internal buffer
      */
     public SocketInputStream(InputStream is, int bufferSize) {
@@ -95,10 +94,9 @@ public class SocketInputStream extends InputStream {
      * Read the request line, and copies it to the given buffer. This function is meant to
      * be used during the HTTP request header parsing. Do NOT attempt to read the request
      * body using it.
-     *
      * @param requestLine Request line object
      * @throws IOException If an exception occurs during the underlying socket read
-     *                     operations, or if the given buffer is not big enough to accomodate the whole line.
+     * operations, or if the given buffer is not big enough to accomodate the whole line.
      */
     public void readRequestLine(HttpRequestLine requestLine) throws IOException {
 
@@ -111,7 +109,8 @@ public class SocketInputStream extends InputStream {
         do { // Skipping CR or LF
             try {
                 chr = read();
-            } catch (IOException e) {
+            }
+            catch (IOException e) {
                 chr = -1;
             }
         }
@@ -139,7 +138,8 @@ public class SocketInputStream extends InputStream {
                     System.arraycopy(requestLine.method, 0, newBuffer, 0, maxRead);
                     requestLine.method = newBuffer;
                     maxRead = requestLine.method.length;
-                } else {
+                }
+                else {
                     throw new IOException(sm.getString("requestStream.readline.toolong"));
                 }
             }
@@ -184,7 +184,8 @@ public class SocketInputStream extends InputStream {
                     System.arraycopy(requestLine.uri, 0, newBuffer, 0, maxRead);
                     requestLine.uri = newBuffer;
                     maxRead = requestLine.uri.length;
-                } else {
+                }
+                else {
                     throw new IOException(sm.getString("requestStream.readline.toolong"));
                 }
             }
@@ -198,7 +199,8 @@ public class SocketInputStream extends InputStream {
             }
             if (buf[pos] == SP) {
                 space = true;
-            } else if ((buf[pos] == CR) || (buf[pos] == LF)) {
+            }
+            else if ((buf[pos] == CR) || (buf[pos] == LF)) {
                 // HTTP/0.9 style request
                 eol = true;
                 space = true;
@@ -225,7 +227,8 @@ public class SocketInputStream extends InputStream {
                     System.arraycopy(requestLine.protocol, 0, newBuffer, 0, maxRead);
                     requestLine.protocol = newBuffer;
                     maxRead = requestLine.protocol.length;
-                } else {
+                }
+                else {
                     throw new IOException(sm.getString("requestStream.readline.toolong"));
                 }
             }
@@ -241,9 +244,11 @@ public class SocketInputStream extends InputStream {
             }
             if (buf[pos] == CR) {
                 // Skip CR.
-            } else if (buf[pos] == LF) {
+            }
+            else if (buf[pos] == LF) {
                 eol = true;
-            } else {
+            }
+            else {
                 requestLine.protocol[readCount] = (char) buf[pos];
                 readCount++;
             }
@@ -258,10 +263,9 @@ public class SocketInputStream extends InputStream {
      * Read a header, and copies it to the given buffer. This function is meant to be used
      * during the HTTP request header parsing. Do NOT attempt to read the request body
      * using it.
-     *
      * @param requestLine Request line object
      * @throws IOException If an exception occurs during the underlying socket read
-     *                     operations, or if the given buffer is not big enough to accomodate the whole line.
+     * operations, or if the given buffer is not big enough to accomodate the whole line.
      */
     public void readHeader(HttpHeader header) throws IOException {
 
@@ -277,7 +281,8 @@ public class SocketInputStream extends InputStream {
             header.nameEnd = 0;
             header.valueEnd = 0;
             return;
-        } else {
+        }
+        else {
             pos--;
         }
 
@@ -297,7 +302,8 @@ public class SocketInputStream extends InputStream {
                     System.arraycopy(header.name, 0, newBuffer, 0, maxRead);
                     header.name = newBuffer;
                     maxRead = header.name.length;
-                } else {
+                }
+                else {
                     throw new IOException(sm.getString("requestStream.readline.toolong"));
                 }
             }
@@ -355,7 +361,8 @@ public class SocketInputStream extends InputStream {
                 }
                 if ((buf[pos] == SP) || (buf[pos] == HT)) {
                     pos++;
-                } else {
+                }
+                else {
                     space = false;
                 }
             }
@@ -368,7 +375,8 @@ public class SocketInputStream extends InputStream {
                         System.arraycopy(header.value, 0, newBuffer, 0, maxRead);
                         header.value = newBuffer;
                         maxRead = header.value.length;
-                    } else {
+                    }
+                    else {
                         throw new IOException(sm.getString("requestStream.readline.toolong"));
                     }
                 }
@@ -383,9 +391,11 @@ public class SocketInputStream extends InputStream {
                     readStart = 0;
                 }
                 if (buf[pos] == CR) {
-                } else if (buf[pos] == LF) {
+                }
+                else if (buf[pos] == LF) {
                     eol = true;
-                } else {
+                }
+                else {
                     // FIXME : Check if binary conversion is working fine
                     int ch = buf[pos] & 0xff;
                     header.value[readCount] = (char) ch;
@@ -399,7 +409,8 @@ public class SocketInputStream extends InputStream {
             if ((nextChr != SP) && (nextChr != HT)) {
                 pos--;
                 validLine = false;
-            } else {
+            }
+            else {
                 eol = false;
                 // if the buffer is full, extend it
                 if (readCount >= maxRead) {
@@ -408,7 +419,8 @@ public class SocketInputStream extends InputStream {
                         System.arraycopy(header.value, 0, newBuffer, 0, maxRead);
                         header.value = newBuffer;
                         maxRead = header.value.length;
-                    } else {
+                    }
+                    else {
                         throw new IOException(sm.getString("requestStream.readline.toolong"));
                     }
                 }
